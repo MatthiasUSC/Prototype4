@@ -17,9 +17,12 @@ public class Move_Player : MonoBehaviour
     public float checkRadius;
     public LayerMask whatIsGround;
 
+    public float slowDownOnCollision;
+
     private float jumpTimeCounter;
     public float jumpTime;
     private bool isJumping;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +36,10 @@ public class Move_Player : MonoBehaviour
         if (transform.position.x > speedMilestoneCount)
         {
             speedMilestoneCount += speedIncreaseMilestone;
-            moveSpeed = moveSpeed * speedMultiplier;
+            if(isSlowingDown == false){ // Should only speed up when not in invunerability state after collision
+                moveSpeed = moveSpeed * speedMultiplier;
+            }
+            
         }
 
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
@@ -44,14 +50,14 @@ public class Move_Player : MonoBehaviour
         {
             isJumping = true;
             jumpTimeCounter = jumpTime;
-            rb.velocity = Vector2.up * jumpForce;
+            rb.velocity =  new Vector2(moveSpeed, jumpForce);
         }
 
         if ( Input.GetKey(KeyCode.Space) && isJumping == true )
         {
             if(jumpTimeCounter > 0)
             {
-                rb.velocity = Vector2.up * jumpForce;
+                rb.velocity = new Vector2(moveSpeed, jumpForce);
                 jumpTimeCounter -= Time.deltaTime;
             }
             else
@@ -64,6 +70,23 @@ public class Move_Player : MonoBehaviour
         if( Input.GetKeyUp(KeyCode.Space) )
         {
             isJumping = false;
+        }
+    }
+
+    bool isSlowingDown = false;
+    IEnumerator slowDown(){
+        Color orig = GetComponent<SpriteRenderer>().color;
+        moveSpeed *= slowDownOnCollision;
+        GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(3.0f);
+        GetComponent<SpriteRenderer>().color = orig;
+        isSlowingDown = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D col){
+        if(isSlowingDown == false){
+            isSlowingDown = true;
+            StartCoroutine(slowDown());
         }
     }
 }
