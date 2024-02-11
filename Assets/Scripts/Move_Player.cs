@@ -6,10 +6,10 @@ public class Move_Player : MonoBehaviour
 {
     private Rigidbody2D rb;
 
+    public float moveSpeed;
     private float speedMilestoneCount;
     public float speedMultiplier;
     public float speedIncreaseMilestone;
-    public float moveSpeed;
 
     public float jumpForce;
     private bool isGrounded;
