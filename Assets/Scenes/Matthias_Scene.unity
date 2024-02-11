@@ -338,14 +338,14 @@ MonoBehaviour:
   speedMultiplier: 1.05
   speedIncreaseMilestone: 10
   moveSpeed: 10
-  jumpForce: 20
+  jumpForce: 10
   feetPos: {fileID: 768205980}
   checkRadius: 0.3
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
   slowDownOnCollision: 0.75
-  jumpTime: 0.35
+  jumpTime: 0.5
 --- !u!61 &637706873
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -417,7 +417,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &637706875
 SpriteRenderer:
   m_ObjectHideFlags: 0
