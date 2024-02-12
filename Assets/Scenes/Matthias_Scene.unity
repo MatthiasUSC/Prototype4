@@ -483,7 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  speedMultiplier: 1.1
+  speedMultiplier: 1.05
   speedIncreaseMilestone: 10
   jumpForce: 10
   feetPos: {fileID: 768205980}
