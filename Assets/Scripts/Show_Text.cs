@@ -9,6 +9,7 @@ public class NewBehaviourScript : MonoBehaviour
     public Move_Player script;
     public string textValue;
     public Text textElement;
+    bool isEnded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,9 @@ public class NewBehaviourScript : MonoBehaviour
         int scriptInt = (int)script.moveSpeed;
         textElement.text = scriptInt.ToString() + " MPH";
 
-        if(script.moveSpeed > 100){
+        if(script.moveSpeed > 100 && isEnded==false){
             Time.timeScale = 0;
+            isEnded=true;
         }
     }
 }
