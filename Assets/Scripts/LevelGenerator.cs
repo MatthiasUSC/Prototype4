@@ -19,12 +19,12 @@ public class LevelGenerator : MonoBehaviour
 
         float dist = graceDist;
         while(dist < length){
-            float wallHeight = Random.Range(1f, 10f);
+            float wallHeight = Random.Range(3f, 10f);
             float wallGapWidth = Random.Range(0.25f, 2f);
-            float wallGapHeight = Random.Range(3f, 6f);
+            float wallGapHeight = Random.Range(5f, 10f);
             GameObject wall = Instantiate(wallPrefab, new Vector3(dist, wallHeight, 0), Quaternion.identity);
             wall.transform.localScale = new Vector3(wallGapWidth, wallGapHeight, 1);
-            dist += Random.Range(20f, 100f);
+            dist += Random.Range(30f, 100f);
         }
     }
 

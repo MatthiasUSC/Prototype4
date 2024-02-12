@@ -67,6 +67,12 @@ public class Move_Player : MonoBehaviour
             
         }
 
+        if(Input.GetKey(KeyCode.Space)){
+            rb.gravityScale = 15;
+        } else{
+            rb.gravityScale = 5;
+        }
+
         if( Input.GetKeyUp(KeyCode.Space) )
         {
             isJumping = false;

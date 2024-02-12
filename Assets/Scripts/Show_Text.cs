@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -21,5 +22,9 @@ public class NewBehaviourScript : MonoBehaviour
     {
         int scriptInt = (int)script.moveSpeed;
         textElement.text = scriptInt.ToString() + " MPH";
+
+        if(script.moveSpeed > 100){
+            Time.timeScale = 0;
+        }
     }
 }
