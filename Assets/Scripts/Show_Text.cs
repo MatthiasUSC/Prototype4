@@ -19,6 +19,7 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textElement.text = script.moveSpeed.ToString() + " MPH";
+        int scriptInt = (int)script.moveSpeed;
+        textElement.text = scriptInt.ToString() + " MPH";
     }
 }
