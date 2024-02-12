@@ -10,6 +10,7 @@ public class NewBehaviourScript : MonoBehaviour
     public string textValue;
     public Text textElement;
     bool isEnded = false;
+    public AudioSource winBGM;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class NewBehaviourScript : MonoBehaviour
         if(script.moveSpeed > 100 && isEnded==false){
             Time.timeScale = 0;
             isEnded=true;
+            winBGM.Play();
         }
     }
 }
